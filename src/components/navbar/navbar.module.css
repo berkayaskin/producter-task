@@ -1,0 +1,10 @@
+.wrapper {
+  @apply flex h-14 items-center gap-x-1 border-b border-themeSeperator bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:pl-[0.875rem] lg:shadow-none;
+}
+.controlButton {
+  @apply rounded-[4px] bg-themeLightGray p-1 text-themeGray hover:text-gray-500 !important;
+}
+
+.taskItemButton {
+  @apply rounded-[4px] border border-themeBlue p-2 text-themeBlue;
+}
