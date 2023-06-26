@@ -7,12 +7,29 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        themeBlue: '#2D70FD',
+        themeDarkBlue: {
+          100: '#0017470D',
+          200: '#00174712',
+          300: '#0017471A',
+          400: '#001747',
+        },
+        themeLightGray: '#8C97AC12',
+        themeGray: '#8C97AC',
+        themeGreen: '#00D8A7',
+        themeOrange: '#FE6B38',
+        themePurple: '#577CFF',
+        themeRed: '#FF6464',
+        themeYellow: {
+          300: '#FFD166',
+          400: '#FFC84A',
+        },
+        themeDusk: '#405175',
+        themeBackground: '#FAFBFC',
+        themeSeperator: '#F6F9FB',
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
