@@ -1,3 +1,5 @@
+import Navbar from '@/components/navbar'
+import Sidebar from '@/components/sidebar'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -14,8 +16,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-full scroll-smooth bg-white antialiased">
+      <body className={inter.className}>
+        <Navbar />
+        <Sidebar />
+        {children}
+      </body>
     </html>
   )
 }

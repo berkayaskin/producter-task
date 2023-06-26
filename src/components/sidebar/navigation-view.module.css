@@ -1,0 +1,15 @@
+.navigationItemLink {
+  @apply flex items-center gap-x-2 rounded-[4px] p-2 text-[0.8125rem] leading-6 tracking-[0.01625rem];
+}
+
+.activeNavigationItemLink {
+  @apply bg-themeLightGray;
+}
+
+.activeProfilePhoto {
+  @apply h-6 w-6 rounded-full bg-themeLightGray;
+}
+
+.activeProfileName {
+  @apply text-[0.8125rem] font-medium leading-6 tracking-[0.01625rem] text-themeDarkBlue-400 hover:text-themeDarkBlue-400/80;
+}
