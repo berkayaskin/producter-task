@@ -1,5 +1,6 @@
 import Navbar from '@/components/navbar'
 import Sidebar from '@/components/sidebar'
+import ReduxProvider from '@/redux/provider'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth bg-white antialiased">
       <body className={inter.className}>
-        <Navbar />
-        <Sidebar />
-        {children}
+        <ReduxProvider>
+          <Navbar />
+          <Sidebar />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   )

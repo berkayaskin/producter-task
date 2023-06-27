@@ -1,4 +1,6 @@
 'use client'
+import { toggleSidebar } from '@/redux/features/sidebar-slice'
+import { AppDispatch } from '@/redux/store'
 import {
   AdjustmentsVerticalIcon,
   Bars3Icon,
@@ -7,12 +9,12 @@ import {
   PlusIcon,
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styles from './navbar.module.css'
 import logo from '/public/assets/images/logo.png'
 
 export default function Navbar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
     <nav className="sticky top-0 z-50">
@@ -20,7 +22,7 @@ export default function Navbar() {
         <button
           type="button"
           className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
-          onClick={() => setSidebarOpen(true)}
+          onClick={() => dispatch(toggleSidebar())}
         >
           <span className="sr-only">Open sidebar</span>
           <Bars3Icon className="h-6 w-6" aria-hidden="true" />

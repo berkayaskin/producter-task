@@ -1,8 +1,9 @@
+'use client'
+import { useAppSelector } from '@/redux/store'
 import classNames from '@/utils/classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './navigation-view.module.css'
-import profilePhoto from '/public/assets/images/profile-photo.png'
 
 import {
   BellIcon,
@@ -39,6 +40,11 @@ const bottomNavigation = [
   { id: 3, name: 'Notifications', href: '#', icon: BellIcon, current: false },
 ]
 export default function NavigationView() {
+  const photo = useAppSelector((state) => state.auth.photo)
+  const user = useAppSelector((state) => state.auth.user)
+  const company = useAppSelector((state) => state.auth.company)
+  const letter = company?.charAt(0).toUpperCase()
+
   return (
     <nav className="flex flex-1 flex-col">
       <ul role="list" className="flex flex-1 flex-col gap-y-4">
@@ -105,10 +111,10 @@ export default function NavigationView() {
               className={styles.activeProfilePhoto}
               width={32}
               height={32}
-              src={profilePhoto}
+              src={photo}
               alt="Profile photo"
             />
-            <span className={styles.activeProfileName}>Neil Larkins</span>
+            <span className={styles.activeProfileName}>{user}</span>
           </Link>
         </li>
         <div className="h-px w-full bg-themeSeperator" aria-hidden="true" />
@@ -116,10 +122,10 @@ export default function NavigationView() {
           <Link href="#" className="-mx-3 flex gap-x-2 p-2 text-sm leading-6">
             <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-themeYellow-400">
               <span className="text-[0.875rem] font-medium leading-4 tracking-[0.0175rem] text-white">
-                E
+                {letter}
               </span>
             </div>
-            <span className={styles.activeProfileName}>Epodpay Inc.</span>
+            <span className={styles.activeProfileName}>{company}</span>
           </Link>
         </li>
       </ul>
