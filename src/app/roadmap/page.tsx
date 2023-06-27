@@ -1,7 +1,7 @@
-export default function Dashboard() {
+export default function Roadmap() {
   return (
     <section className="flex h-full items-center justify-center">
-      Dashboard Page
+      Roadmap Page
     </section>
   )
 }

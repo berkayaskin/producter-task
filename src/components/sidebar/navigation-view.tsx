@@ -3,6 +3,7 @@ import { useAppSelector } from '@/redux/store'
 import classNames from '@/utils/classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSelectedLayoutSegments } from 'next/navigation'
 import styles from './navigation-view.module.css'
 
 import {
@@ -16,18 +17,6 @@ import {
   UsersIcon,
 } from '@heroicons/react/24/outline'
 
-const navigation = [
-  {
-    name: 'Dashboard',
-    href: '#',
-    icon: HomeIcon,
-    current: true,
-  },
-  { name: 'Feedback', href: '#', icon: UsersIcon, current: false },
-  { name: 'Task', href: '#', icon: FolderIcon, current: false },
-  { name: 'Roadmap', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Changelog', href: '#', icon: DocumentDuplicateIcon, current: false },
-]
 const bottomNavigation = [
   { id: 1, name: 'Invite people', href: '#', icon: PlusIcon, current: false },
   {
@@ -40,6 +29,40 @@ const bottomNavigation = [
   { id: 3, name: 'Notifications', href: '#', icon: BellIcon, current: false },
 ]
 export default function NavigationView() {
+  const segments: string[] = useSelectedLayoutSegments()
+  const navigation = [
+    {
+      name: 'Dashboard',
+      href: '/',
+      icon: HomeIcon,
+      current: segments.length === 0,
+    },
+    {
+      name: 'Feedback',
+      href: '/feedback',
+      icon: UsersIcon,
+      current: segments[0] === 'feedback',
+    },
+    {
+      name: 'Task',
+      href: '/task',
+      icon: FolderIcon,
+      current: segments[0] === 'task',
+    },
+    {
+      name: 'Roadmap',
+      href: '/roadmap',
+      icon: CalendarIcon,
+      current: segments[0] === 'roadmap',
+    },
+    {
+      name: 'Changelog',
+      href: '/changelog',
+      icon: DocumentDuplicateIcon,
+      current: segments[0] === 'changelog',
+    },
+  ]
+
   const photo = useAppSelector((state) => state.auth.photo)
   const user = useAppSelector((state) => state.auth.user)
   const company = useAppSelector((state) => state.auth.company)
@@ -58,7 +81,7 @@ export default function NavigationView() {
                     item.current
                       ? 'bg-themeBlue text-white'
                       : 'text-themeDusk hover:bg-blue-100 hover:text-themeBlue',
-                    `${styles.navigationItemLink} group`
+                    `${styles.navigationItemLink} group relative`
                   )}
                 >
                   <item.icon
@@ -71,6 +94,9 @@ export default function NavigationView() {
                     aria-hidden="true"
                   />
                   {item.name}
+                  {item.current && (
+                    <div className="absolute right-3 h-[5px] w-[5px] rounded-[1.5px] bg-white"></div>
+                  )}
                 </Link>
               </li>
             ))}
