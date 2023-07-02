@@ -28,6 +28,7 @@ module.exports = {
         themeDusk: '#405175',
         themeBackground: '#FAFBFC',
         themeSeperator: '#F6F9FB',
+        themeSecondarySeperator: '#F1F4F4',
       },
     },
   },
